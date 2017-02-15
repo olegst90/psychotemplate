@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Psycho Template</title>
+	<link rel="stylesheet" href="css/psycho.css" type="text/css">
+    <script>
+        window.onload = function() {
+            //sections which can be expanded and collapsed
+            var sections = document.querySelectorAll("li.sectionheader:not(.activeparent)");
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].onclick = function() {
+                    console.log("section clicked")
+                    if (this.classList.contains("selected")) {
+                        this.classList.remove("animated");
+                        this.classList.remove("selected");
+                    } else {
+                        this.classList.add("animated");
+                        this.classList.add("selected");
+                    }
+                };
+            }
+            /* wrapping all h3's in spans */
+            var h3 = document.querySelectorAll("div.content-container h3");
+            for (var i = 0; i < h3.length; i++) {
+                var parent = h3[i].parentNode;
+                var span = document.createElement("span");
+                var span_text = document.createTextNode(h3[i].textContent);
+                span.appendChild(span_text);
+                h3[i].textContent = "";
+                h3[i].appendChild(span);
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="header"></div>
+    <div class="faux-row">
+	<div class="body-area">
+        <div class="sidebar-area">
+            <div class="logo"></div>
+            <div class="menu">
+                <!-- 'Simple Navigation Menu' --> 
+              <ul>
+                <li class="activeparent">
+                    <a class="activeparent" href="http://psycho.localhost/">Home Page</a>
+                    <ul>
+                         <li class="currentpage">
+                              <a class="currentpage" href="http://psycho.localhost/index.php?page=child-page">Child Page</a>
+                          </li>
+                    </ul>
+                </li>
+                <li>
+                      <a href="http://psycho.localhost/index.php?page=parent-page">Parent Page</a>
+                </li>
+                  <li class="sectionheader">Section
+                       <ul>
+                          <li>
+                               <a href="http://psycho.localhost/index.php?page=subsection">Subsection</a>
+                          </li>
+                        </ul>
+                  </li>
+             </ul>
+            </div>
+            <div class="footer-content">
+              <div class="connect">
+                 <a href="http://google.com"><div class="connect-link fb"></div></a>
+                 <a  href="http://google.com"><div class="connect-link vk"></div></a>
+                  <a  href="http://google.com"><div class="connect-link youtube"></div></a>
+              </div>
+            </div>
+        </div>
+        <div class="content-area">
+            <div class="content-container"> 
+                <h2>Header</h2>
+                <h3>Subheader</h3>
+               Content<br><br>Very long contenttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+            </div>
+        </div>
+      </div>  
+        </div>
+        <div class="footer-area">
+        </div>
+</body>
+</html>

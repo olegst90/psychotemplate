@@ -1,0 +1,233 @@
+/*------------------------- Fonts ------------------------*/
+@font-face {
+	font-family: 'Conv_Muli-Italic';
+	src: url('../fonts/Muli-Italic.eot');
+	src: url('../fonts/Muli-Italic.eot?#iefix') format('embedded-opentype'), url('../fonts/Muli-Italic.woff') format('woff'), url('../fonts/Muli-Italic.ttf') format('truetype'), url('../fonts/Muli-Italic.svg#Muli-Italic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Conv_Muli-Regular';
+	src: url('../fonts/Muli-Regular.eot');
+	src: url('../fonts/Muli-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/Muli-Regular.woff') format('woff'), url('../fonts/Muli-Regular.ttf') format('truetype'), url('../fonts/Muli-Regular.svg#Muli-Regular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+html {
+    height: 100%;
+    min-width: 750px;
+}
+
+body {
+    height:100%;
+    background: url(../images/bg-body.jpg);
+    margin:0;
+}
+
+div {
+    box-sizing:border-box;
+}
+div.header {
+    position:relative;
+    height: 25px;
+    border-bottom: 1px solid #9a9a9a;
+}
+
+div.faux-row  {    
+    display: table;
+    width: 100%;
+    min-height: calc(100% - 50px);
+    box-shadow: 3px 3px 4px 0px #a3a3a3;
+}
+
+div.body-area {
+    display: table-row;
+    box-shadow:3px 3px 4px 0px #a3a3a3;
+    vertical-align: top;
+}
+
+div.footer-area {
+    min-height: 25px;
+}
+
+div.footer-content {
+   /* this works because parent table-cell has relative position */
+   position: absolute;
+   bottom: 0;
+   right: 0;
+}
+
+div.connect {
+
+}
+
+div.connect-link {
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    float: left;
+    text-indent: -99999px;
+    border-radius: 8px;
+}
+
+div.connect-link.fb {
+  background: url(../images/social.png) no-repeat 0px 0px;
+}
+
+div.connect-link.vk {
+  background: url(../images/social.png) no-repeat 0px -50px;
+}
+
+div.connect-link.youtube {
+  background: url(../images/social.png) no-repeat 0px -100px;
+}
+
+
+/*   ===  SIDEBAR ===  */
+
+div.sidebar-area {
+    /* position must be relative for absolute bottom 0 to work for div.connect block */
+    position: relative;
+    /* for div.connect not to override menu when page height is decreased */
+    padding-bottom: 130px;
+    display: table-cell;    
+    width: 240px;
+    border-width: 1px;f
+    border-style:solid none solid none;
+    border-color:#E5E5E5;
+    background: url(../images/bg-sidebar.jpg);
+}
+
+div.logo {
+    background:url("../images/logo.png");
+    height:135px;
+    width:229px;
+}
+
+
+div.menu {
+    margin-right: 20px
+}
+
+/* Getting rid of list markers for menu items */d
+div.menu ul {
+    list-style-type: none;
+}   
+/* forcing cursor to be hand like over links */
+div.menu li, div.menu a {
+    /*margin: 5px 0;*/
+    cursor: pointer;
+    cursor: hand;
+}
+/* hiding content of collapsed sections */
+div.menu ul, div.menu ul li {
+    overflow:hidden;
+}   
+/*Text on the right; get rid of ugly left padding*/
+div.menu > ul {
+    text-align: right;
+    padding: 15px 0px 15px 0;
+}  
+
+/* collapsed items are no more than this high */
+div.menu ul li   {
+    max-height:30px;
+}
+/* expanded sections height */
+div.menu ul li.activeparent,
+div.menu ul li.selected {
+    max-height:1000px;
+}
+
+.animated {
+    transition : max-height 3s ease;
+}
+
+
+div.menu li a, div.menu li {
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+    line-height: 30px;
+    text-shadow: 0 1px 0 #dfdfdf;
+    color: #919191;
+}
+
+
+div.menu li a.currentpage, 
+div.menu li > a:hover,
+div.menu li.sectionheader:hover
+{
+    color: #6b6b6b;
+}
+
+/*
+div.menu li.parent ul {
+    background: linear-gradient(to right, rgba(107,107,107, 0.0), rgba(107,107,107, 0.15));
+}
+*/
+/* === CONTENT AREA === */
+
+div.content-area {
+    display: table-cell;
+    background: #e3e3e3;
+    padding:25px;
+    box-shadow:3px 3px 6px 0px #bcbbbb inset;
+    border-style: none none none solid;
+    border-color: #E5E5E5;
+    border-width: 1px;
+    vertical-align: top;
+}
+
+div.content-container {
+    padding: 25px;
+    background-color: white;
+    box-shadow: 0 0 5px 3px #d3d3d3;
+    max-width: 650px;
+}
+
+div.content-container h2 {
+    color: #919191;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #7d7d7d;
+    padding: 36px 0 0 22px;
+    margin: 0;
+}
+
+div.content-container h3 {
+    background: url("../images/border.jpg") repeat-x scroll right center transparent;
+    overflow: hidden;
+    margin: 20px 21px;
+}
+
+div.content-container h3 span {
+    background-color: #FFFFFF;
+    color: #7D7D7D;
+    display: inline;
+    font-family: 'Conv_Muli-Regular';
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 24px;
+    margin: 22px 0;
+    padding: 0 11px 0 0;
+}
+
+div.content-container {
+    font-family: 'Conv_Muli-Italic';
+    font-size: 16px;
+    line-height: 24px;
+    color: #808080;
+    padding: 0 22px 22px 22px;
+    overflow-wrap: break-word;
+}
+
+
