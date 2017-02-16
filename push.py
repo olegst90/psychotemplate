@@ -9,8 +9,11 @@ import pushconfig
 
 print "Copying files..."
 dst = pushconfig.site_root + "/public/themes/" + pushconfig.in_name
+os.makedirs(dst)
 print "copying to " + dst
-copytree(".", dst)
+copytree("fonts", dst + "/fonts")
+copytree("css", dst + "/css")
+copytree("images", dst + "/images")
 print "Copying layout to db..."
 db=MySQLdb.connect(host=pushconfig.db_host,user=pushconfig.db_user, passwd=pushconfig.db_pass,db=pushconfig.db_name)
 
