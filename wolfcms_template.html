@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title><?php echo $this->title(); ?></title>
+	<link rel="stylesheet" href="<?php print THEMES_URI.DS.'psycho/css/psycho.css' ?>" type="text/css">
+    <script>
+        window.onload = function() {
+            //sections which can be expanded and collapsed
+            var sections = document.querySelectorAll("li.sectionheader:not(.activeparent) > span");
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].onclick = function() {
+                    console.log("section clicked")
+                    if (this.parentElement.classList.contains("selected")) {
+                        this.parentElement.classList.remove("animated");
+                        this.parentElement.classList.remove("selected");
+                    } else {
+                        this.parentElement.classList.add("animated");
+                        this.parentElement.classList.add("selected");
+                    }
+                };
+            }
+            /* wrapping all h3's in spans */
+            var h3 = document.querySelectorAll("div.content-container h3");
+            for (var i = 0; i < h3.length; i++) {
+                var parent = h3[i].parentNode;
+                var span = document.createElement("span");
+                var span_text = document.createTextNode(h3[i].textContent);
+                span.appendChild(span_text);
+                h3[i].textContent = "";
+                h3[i].appendChild(span);
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="header"></div>
+    <div class="faux-row">
+	<div class="body-area">
+        <div class="sidebar-area">
+            <div class="logo"></div>
+              <div class="menu">
+                 <ul>
+                 <?php
+                       function is_section($page) {
+                           if ($page->content() != '') {
+                                error_log($page->slug()." is not a section"); 
+                                return false;
+                          }
+                           else {
+                             error_log($page->slug()." is a section"); 
+                               return true;
+                           }
+                        }
+                           
+                       foreach($this->find("/")->children() as $root_page) { 
+                          $li_class = "";
+                          if(is_section($root_page))
+                             $li_class .= " sectionheader";
+                          if ($this->parent(1) && strcmp($root_page->slug(), $this->parent(1)->slug()) == 0) 
+                             $li_class .= " activeparent";
+                          error_log("li class ".$li_class);
+                       ?>
+                       <li class="<?php print "".$li_class;  ?>" >
+                           <span>
+                              <?php if(is_section($root_page)){
+                                    print $root_page->title();
+                              } else {
+                                    print '<a href="'.$root_page->url().'">'.$root_page->title().'</a>';
+                              } ?>
+                           </span>
+                           <?php
+                              if($root_page->childrenCount() > 0) {
+                                  ?>  <ul> <?php
+                                  foreach($root_page->children() as $child_page) { 
+                                      ?>  <li> <span><?php
+                                             print '<a href="'.$child_page->url().'">'.$child_page->title().'</a>'; 
+                                      ?>  </span> </li> <?php
+                                  }
+                                  ?> </ul> <?php
+                               }
+                           ?>
+                       </li>       
+                  <?php } ?>
+                 </ul>   
+          </div>
+        
+            <div class="footer-content">
+              <div class="connect">
+                 <a href="http://google.com"><div class="connect-link fb"></div></a>
+                 <a  href="http://google.com"><div class="connect-link vk"></div></a>
+                  <a  href="http://google.com"><div class="connect-link youtube"></div></a>
+              </div>
+            </div>
+        </div>
+        <div class="content-area">
+            <div class="content-container"> 
+                <h2><?php print $this->title();?></h2>
+                <?php print $this->content();?>
+            </div>
+        </div>
+      </div>  
+        </div>
+        <div class="footer-area">
+        </div>
+</body>
+</html>

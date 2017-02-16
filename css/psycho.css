@@ -139,7 +139,7 @@ div.menu li.selected
   max-height: 500px;
 }
 
-div.menu > ul > li {
+div.menu > ul  {
   background: linear-gradient(to right, rgba(107,107,107, 0.0), rgba(150,150,150, 0.5));
   font-size: 24px;
 }
@@ -147,6 +147,7 @@ div.menu > ul > li {
 div.menu > ul > li > ul {
   background: linear-gradient(to right, rgba(255,255,255, 0.0), rgba(255,255,255, 0.5));
   font-size: 18px;
+  padding-right: 15px;
 }
 
 div.menu span
