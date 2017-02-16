@@ -107,69 +107,82 @@ div.logo {
 }
 
 
-div.menu {
-    margin-right: 20px
-}
 
-/* Getting rid of list markers for menu items */d
+/*  MENU  */
 div.menu ul {
     list-style-type: none;
-}   
-/* forcing cursor to be hand like over links */
+} 
+
 div.menu li, div.menu a {
-    /*margin: 5px 0;*/
     cursor: pointer;
     cursor: hand;
 }
-/* hiding content of collapsed sections */
-div.menu ul, div.menu ul li {
-    overflow:hidden;
-}   
-/*Text on the right; get rid of ugly left padding*/
-div.menu > ul {
-    text-align: right;
-    padding: 15px 0px 15px 0;
-}  
 
-/* collapsed items are no more than this high */
-div.menu ul li   {
-    max-height:30px;
+div.menu {
+  text-align:right;
 }
-/* expanded sections height */
-div.menu ul li.activeparent,
-div.menu ul li.selected {
-    max-height:1000px;
+div.menu ul {
+  display: block;
+  padding-left: 0px;
 }
+
+div.menu li {
+  display: block;
+  line-height: 30px;
+  max-height: 30px;
+  overflow: hidden;
+  }
+
+div.menu li.activeparent,
+div.menu li.selected
+{
+  max-height: 500px;
+}
+
+div.menu > ul > li {
+  background: linear-gradient(to right, rgba(107,107,107, 0.0), rgba(150,150,150, 0.5));
+  font-size: 24px;
+}
+
+div.menu > ul > li > ul {
+  background: linear-gradient(to right, rgba(255,255,255, 0.0), rgba(255,255,255, 0.5));
+  font-size: 18px;
+}
+
+div.menu span
+{
+  padding-right: 15px;
+}
+
 
 .animated {
     transition : max-height 3s ease;
 }
 
-
 div.menu li a, div.menu li {
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    font-size: 24px;
     font-weight: normal;
-    text-transform: uppercase;
     text-decoration: none;
+    text-transform: uppercase;
     line-height: 30px;
     text-shadow: 0 1px 0 #dfdfdf;
     color: #919191;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 
-div.menu li a.currentpage, 
-div.menu li > a:hover,
-div.menu li.sectionheader:hover
+div.menu a.currentpage,
+div.menu span:hover,
+div.menu a:hover
 {
     color: #6b6b6b;
 }
 
-/*
-div.menu li.parent ul {
-    background: linear-gradient(to right, rgba(107,107,107, 0.0), rgba(107,107,107, 0.15));
-}
-*/
+
+
+
 /* === CONTENT AREA === */
 
 div.content-area {
