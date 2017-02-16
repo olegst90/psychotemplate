@@ -1,0 +1,8 @@
+db_host = "localhost"
+db_user = "wolfcms"
+db_pass = "wolfcms"
+db_name = "wolfcms"
+site_root = "/home/olegst/Web/wolfcms/"
+
+in_file = "wolfcms_template.html"
+in_name = "psycholayout"
